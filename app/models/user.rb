@@ -8,6 +8,14 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  
   # attr_accessible :title, :body
   :remember_me
+  
+  after_create :default_role
+
+  private
+  def default_role
+    self.roles << Role.where(:name => 'Owner').first
+  end
 end

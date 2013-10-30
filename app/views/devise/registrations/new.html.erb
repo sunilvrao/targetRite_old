@@ -2,23 +2,23 @@
 <div class="mid-container wrapper">
   <h1 class="title">Create your account</h1>
 
-	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+	<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
     <ul class="fields">
       <li>
         <i class="icon-envelope"></i>
-        <%= f.text_field :email, :placeholder => "email", :autocomplete => "off" %>
+        <%= f.text_field :email, :required => true, :placeholder => "email", :autocomplete => "off" %>
       </li>
       <li>
         <i class="icon-user"></i>
-        <%= f.text_field :name, :placeholder => "first name", :autocomplete => "off" %>
+        <%= f.text_field :name, :required => true, :placeholder => "first name", :autocomplete => "off" %>
       </li>
       <li>
         <i class="icon-key"></i>
-        <%= f.password_field :password, :placeholder => "password", :autocomplete => "off" %>
+        <%= f.password_field :password, :required => true, :placeholder => "password", :autocomplete => "off" %>
       </li>
       <li>
         <i class="icon-key"></i>
-        <%= f.password_field :password_confirm, :placeholder => "confirm password", :autocomplete => "off" %>
+        <%= password_field_tag :password_confirmation, nil, placeholder: "password confimation", autocomplete: "off" %>
       </li>
     </ul>
 

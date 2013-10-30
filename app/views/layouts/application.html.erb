@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Projectcamp</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render "layouts/sessions_navbar" %>
+
+<div class="header"></div>
+
+<div class="main">
+	<div class="container">
+
+   	 <div class="row">
+		 <div class="span9">
+			<h1 class="pull-left">TargetRite </h1>
+		 </div>
+	 </div>
+    <%= yield %>
+ 	<%= render "layouts/footer" %>
+  	</div>
+</div>
+</body>
+</html>

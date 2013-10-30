@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Projectcamp</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!-- there's an IE separated stylesheet with the following resets for IE -->
+  <!--[if lt IE 9]>
+          <%#= stylesheet_link_tag "ie" %>
+  <style type="text/css">
+      .tags a:before, .tags a:after {
+          display: none;
+      }
+      .badge.top {
+          position: static;
+      }
+  </style>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="sidebar-helper">
+  <a class="btn green">Sidebar</a>
+</div>
+
+<%= render "layouts/modal" %>
+
+<%= render "layouts/navbar" %>
+
+<div class="header"></div>
+
+<div class="main">
+  <div class="container">
+
+    <div class="row">
+      <div class="span9">
+        <ul class="nav nav-tabs header-tabs btn-block pull-right">
+          <li class="active"><a href="#"><i class="icon-dashboard"></i> Dashboard</a></li>
+			<% if user_signed_in? %>
+				<li>
+				<%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
+				</li>
+			<% else %>
+				<li>
+				<%= link_to 'Login', new_user_session_path %>
+				</li>
+		  	<% end %>
+		
+          	<% if user_signed_in? %>
+			    <li>
+			    <%= link_to 'Edit account', edit_user_registration_path %>
+			    </li>
+			    <% if current_user.has_role? :admin %>
+			      <li>
+			      <%= link_to 'Admin', users_path %>
+			      </li>
+			    <% end %>
+			  <% else %>
+			    <li>
+			    <%= link_to 'Sign up', new_user_registration_path %>
+			    </li>
+			  <% end %>
+          
+        </ul>
+      </div>
+    </div>
+
+    <div class="row wrapper">
+
+      <div class="span9 main-left">
+        <div class="heading-bar">
+          <h3 class="pull-left">TargetRite <span class="subheading">(subheading possible)</span></h3>
+          <ul class="nav-links pull-right">
+            <li><a href="#"><i class="icon-caret-left"></i> back</a></li>
+            <li class="divider-vertical"></li>
+            <li><a href="#">some link</a></li>
+            <li class="divider-vertical"></li>
+            <li><a href="#">another link</a></li>
+          </ul>
+        </div>
+		
+        <%= yield %>
+      </div>
+
+      <%= render "layouts/sidebar" %>
+
+    </div>
+    <%= render "layouts/footer" %>
+  </div>
+
+
+</div>
+
+
+
+
+</body>
+</html>

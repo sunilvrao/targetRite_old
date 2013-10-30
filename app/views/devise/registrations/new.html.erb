@@ -1,0 +1,48 @@
+
+<div class="mid-container wrapper">
+  <h1 class="title">Create your account</h1>
+
+	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <ul class="fields">
+      <li>
+        <i class="icon-envelope"></i>
+        <%= f.text_field :email, :placeholder => "email", :autocomplete => "off" %>
+      </li>
+      <li>
+        <i class="icon-user"></i>
+        <%= f.text_field :name, :placeholder => "first name", :autocomplete => "off" %>
+      </li>
+      <li>
+        <i class="icon-key"></i>
+        <%= f.password_field :password, :placeholder => "password", :autocomplete => "off" %>
+      </li>
+      <li>
+        <i class="icon-key"></i>
+        <%= f.password_field :password_confirm, :placeholder => "confirm password", :autocomplete => "off" %>
+      </li>
+    </ul>
+
+    <div class="mid-form">
+      <span class="login-checkbox">
+        <%= check_box_tag :agree %>
+        <%= label_tag :agree, "I have read and agree with the Terms of Use." %>
+      </span>
+      <%= f.submit "Sign Up", class: "btn blue large pull-right" %>
+    </div>
+
+    <div class="inset-margin">
+
+      <%= link_to "#", class: "btn btn-twitter" do %>
+          <i class="icon-twitter-sign"></i> Login with Twitter
+      <% end %>
+      <%= link_to "#", class: "btn btn-facebook" do %>
+          <i class="icon-facebook-sign"></i> Login with Facebook
+      <% end %>
+    </div>
+
+  <% end %>
+
+  <div class="mid-footer">
+    Already have an account? <%= link_to "Login here", login_path %>
+  </div>
+</div>

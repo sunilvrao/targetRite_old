@@ -1,4 +1,10 @@
 TargetRite::Application.routes.draw do
+  resources :addresses
+
+
+  resources :stores
+
+
   resources :tasks
 
 

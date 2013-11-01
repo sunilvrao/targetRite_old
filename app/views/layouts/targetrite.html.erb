@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Projectcamp</title>
+  <title>TargetRite</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -40,31 +40,9 @@
       <div class="span9">
         <ul class="nav nav-tabs header-tabs btn-block pull-right">
           <li class="active"><a href="#"><i class="icon-dashboard"></i> Dashboard</a></li>
-			<% if user_signed_in? %>
-				<li>
-				<%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
-				</li>
-			<% else %>
-				<li>
-				<%= link_to 'Login', new_user_session_path %>
-				</li>
-		  	<% end %>
-		
-          	<% if user_signed_in? %>
-			    <li>
-			    <%= link_to 'Edit account', edit_user_registration_path %>
-			    </li>
-			    <% if current_user.has_role? :admin %>
-			      <li>
-			      <%= link_to 'Admin', users_path %>
-			      </li>
-			    <% end %>
-			  <% else %>
-			    <li>
-			    <%= link_to 'Sign up', new_user_registration_path %>
-			    </li>
-			  <% end %>
-          
+			    <li><a href="#"><i class="icon-dashboard"></i> Campaigns</a></li>
+          <li><a href="#"><i class="icon-dashboard"></i> Stores</a></li>
+          <li><a href="#"><i class="icon-dashboard"></i> Employees</a></li>
         </ul>
       </div>
     </div>

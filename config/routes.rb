@@ -1,4 +1,7 @@
 TargetRite::Application.routes.draw do
+  resources :tasks
+
+
   get "home/index"
 
   devise_for :users

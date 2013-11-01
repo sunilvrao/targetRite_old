@@ -9,7 +9,18 @@
 # See http://railsapps.github.io/rails-environment-variables.html
 puts 'ROLES'
 YAML.load(ENV['ROLES']).each do |role|
-  Role.find_or_create_by_name({ :name => role }, :without_protection => true)
+  r = Role.find_or_create_by_name({ :name => role }, :without_protection => true)
+  if role == "owner"
+  	puts 'role: is indeed owner '
+    r.tasks.create! name: "Update Profile", role_id: r.id
+    r.tasks.create! name: "Add/Update your store information", role_id: r.id
+    r.tasks.create! name: "Create a Campaign", role_id: r.id
+    r.tasks.create! name: "Sign up an Employee", role_id: r.id
+  end
+  if role == "employee"
+  	r.tasks.create! name: "Update Profile", role_id: r.id
+  end
+
   puts 'role: ' << role
 end
 puts 'DEFAULT USERS'
